@@ -7,24 +7,30 @@
 <body>
     <h2>多类别分类</h2>
 
-    <h4 th:utext="${msg}">hello world</h4>
+    <h3 th:utext="${msg}">msg</h3>
+    <h4>当前文章信息为:</h4>
+    <span>
+        类别:<a th:text="${type}"></a><br />
+        标题:<a th:href="${link}" th:text="${title}" target="_blank"></a>
+    </span>
 
     <!--仅在特定条件下显示-->
-    <a th:href="@{/login}" th:unless="${msg != '123123'}">Login</a>
+    <!--<a th:href="@{/login}" th:unless="${msg != '123123'}">Login</a>-->
+
 
     <!--循环展示-->
-    <table>
-        <tr>
-            <th>类别</th>
-            <th>标题</th>
-            <th>正文</th>
-        </tr>
-        <tr th:each="n : ${news}">
-            <td th:text="${n.type}">type</td>
-            <td><a th:href="${n.link}" th:text="${n.title}"></a></td>
-            <td th:text="${n.content}">content</td>
-        </tr>
-    </table>
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<th>类别</th>-->
+            <!--<th>标题</th>-->
+            <!--<th>正文</th>-->
+        <!--</tr>-->
+        <!--<tr th:each="n : ${news}">-->
+            <!--<td th:text="${n.type}">type</td>-->
+            <!--<td><a th:href="${n.link}" th:text="${n.title}" target="_blank"></a></td>-->
+            <!--<td th:text="${n.content}">content</td>-->
+        <!--</tr>-->
+    <!--</table>-->
 
 
 </body>

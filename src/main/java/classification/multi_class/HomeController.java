@@ -43,6 +43,14 @@ public class HomeController {
         news.add(specifiedNews);
         model.addAttribute("news", news);
 
+        // 信息渲染
+        String title = specifiedNews.getTitle();
+        String type = specifiedNews.getType();
+        String link = specifiedNews.getLink();
+        model.addAttribute("title", title);
+        model.addAttribute("type", type);
+        model.addAttribute("link", link);
+
         return "multi_class_home";
     }
 }
