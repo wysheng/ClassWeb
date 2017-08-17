@@ -11,7 +11,9 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 配置操作类
@@ -119,6 +121,46 @@ public class ConfigUtil {
             e.printStackTrace();
         }
         return news;
+    }
+
+    /**
+     * 获取资讯类型设置
+     *
+     * @param configpath 配置文件路径(默认存在)
+     */
+    public static Map<String, Double> getClassConfig(String configpath) {
+        Map<String, Double> configMap = new HashMap<String, Double>();
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(configpath)));
+            for (String line = br.readLine(); line != null; line = br.readLine()) {
+                String[] details = line.split(" ");
+                configMap.put(details[0], Double.parseDouble(details[1]));
+            }
+            br.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return configMap;
+    }
+
+    /**
+     * 获取资讯类型设置(数字在前)
+     *
+     * @param configpath 配置文件路径(默认存在)
+     */
+    public static Map<Double, String> getClassConfigByIndex(String configpath) {
+        Map<Double, String> configMap = new HashMap<Double, String>();
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(configpath)));
+            for (String line = br.readLine(); line != null; line = br.readLine()) {
+                String[] details = line.split(" ");
+                configMap.put(Double.parseDouble(details[1]), details[0]);
+            }
+            br.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return configMap;
     }
 
 }

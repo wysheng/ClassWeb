@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import util.ConfigUtil;
+import util.FileUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import classification.multi_class.ClassifyController;
 
 /**
  * 多类别分类控制器
@@ -50,6 +54,21 @@ public class HomeController {
         model.addAttribute("title", title);
         model.addAttribute("type", type);
         model.addAttribute("link", link);
+
+        // 分类预测
+        String filepath = "data/corpus/zixun/" + newsid + ".txt";
+        File file = new File(filepath);
+        if (file.exists()) {
+            String content = FileUtil.getFileData(filepath);
+            String label = ClassifyController.classPredict(content);
+            if (label.equals(null)) {
+                model.addAttribute("msg", "未能正确分类");
+            } else {
+                model.addAttribute("msg", "当前文章预测类别为: " + label);
+            }
+        } else {
+            model.addAttribute("msg", "当前文章不存在于语料库中,无法获取其文本内容!");
+        }
 
         return "multi_class_home";
     }

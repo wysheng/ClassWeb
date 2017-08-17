@@ -14,6 +14,10 @@
         标题:<a th:href="${link}" th:text="${title}" target="_blank"></a>
     </span>
 
+    <h4>预测信息</h4>
+    <span>
+        <a th:text="${msg}"></a>
+    </span>
     <!--仅在特定条件下显示-->
     <!--<a th:href="@{/login}" th:unless="${msg != '123123'}">Login</a>-->
 
