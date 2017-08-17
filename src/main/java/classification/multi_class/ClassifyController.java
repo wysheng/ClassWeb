@@ -14,8 +14,6 @@ import org.apache.spark.mllib.feature.HashingTF;
 import org.apache.spark.mllib.linalg.Matrix;
 import org.apache.spark.mllib.regression.LabeledPoint;
 import org.apache.spark.mllib.linalg.Vector;
-import org.apache.spark.mllib.util.MLUtils;
-import org.apache.tools.ant.taskdefs.Java;
 import scala.Tuple2;
 import util.ConfigUtil;
 import util.FileUtil;

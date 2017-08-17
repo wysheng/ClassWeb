@@ -1,13 +1,15 @@
 package util;
 
 import model.News;
+import net.sf.json.JSONObject;
+import net.sf.json.JSONException;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.broadcast.Broadcast;
-import org.json.JSONException;
-import org.json.JSONObject;
+//import org.json.JSONException;
+//import org.json.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -45,7 +47,8 @@ public class ConfigUtil {
                 new Function<String, Boolean>() {
                     @Override
                     public Boolean call(String line) throws Exception {
-                        JSONObject json = new JSONObject(line);
+                        //JSONObject json = new JSONObject(line);
+                        JSONObject json = JSONObject.fromObject(line);
                         if (json.equals(null)) {
                             return false;
                         }
@@ -58,7 +61,8 @@ public class ConfigUtil {
                         String[] details = new String[3];
                         String baseUrl = "http://ai.cmbchina.com/mbf4info/CmbNewsView.aspx?newsID=";
                         try {
-                            JSONObject json = new JSONObject(line);
+                            //JSONObject json = new JSONObject(line);
+                            JSONObject json = JSONObject.fromObject(line);
                             details[0] = json.getString("newstitle");
                             details[1] = json.getString("newsid");
                             details[2] = json.getString("newstypename");
@@ -99,7 +103,8 @@ public class ConfigUtil {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(configpath)));
             for (String line = br.readLine(); line != null; line = br.readLine()) {
-                JSONObject json = new JSONObject(line);
+                //JSONObject json = new JSONObject(line);
+                JSONObject json = JSONObject.fromObject(line);
                 if (!json.equals(null)) {
                     String tmpNewsid = json.getString("newsid");
                     if (tmpNewsid.equals(newsid)) {
