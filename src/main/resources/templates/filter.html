@@ -7,7 +7,18 @@
 <body>
     <h2>文本过滤</h2>
 
+    <h3 th:utext="${msg}"></h3>
 
+    <form action="#" th:action="@{/filter}" method="post">
+        <div class="m-online j-flag">
+            <div class="online_wrap">
+                <!--<textarea placeholder="输入或粘贴要检测的文字，不超过600字" class="online_input"></textarea>-->
+                <input type="text" placeholder="输入或粘贴要检测的文字" th:name="text" class="online_input"/>
+                <p class="online_count"></p>
+            </div>
+        </div>
+        <input type="submit" th:value="查询"/>
+    </form>
 
 </body>
 </html>

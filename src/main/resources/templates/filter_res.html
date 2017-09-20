@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>文本过滤结果</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+    <h2>文本过滤结果</h2>
+
+    <h3 th:utext="${msg}"></h3>
+
+    <table>
+        <tr>
+            <th>本篇文章中包含的敏感词有：</th>
+        </tr>
+        <tr th:each="n : ${sensitiveWords}">
+            <td th:text="${n}">type</td>
+        </tr>
+    </table>
+
+</body>
+</html>
