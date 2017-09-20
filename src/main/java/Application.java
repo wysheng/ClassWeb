@@ -1,6 +1,7 @@
 import org.apache.log4j.PropertyConfigurator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by helencoder on 2017/8/16.
  */
 
-@ComponentScan(basePackages = "classification")
+@ComponentScan(basePackages = "com.helencoder")
 @EnableAutoConfiguration
 public class Application {
     public static void main(String[] args) {

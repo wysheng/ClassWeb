@@ -1,4 +1,4 @@
-package model;
+package com.helencoder.model;
 
 /**
  * 资讯类

@@ -3,4 +3,4 @@
  *
  * Created by helencoder on 2017/8/16.
  */
-package classification.single_class;
+package com.helencoder.classification.single_class;

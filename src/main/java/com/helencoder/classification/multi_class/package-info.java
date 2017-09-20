@@ -3,4 +3,4 @@
  *
  * Created by helencoder on 2017/8/16.
  */
-package classification.multi_class;
+package com.helencoder.classification.multi_class;

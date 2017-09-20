@@ -1,4 +1,4 @@
-package model;
+package com.helencoder.model;
 
 /**
  * Created by helencoder on 2017/8/16.

@@ -1,4 +1,4 @@
-package classification.single_label;
+package com.helencoder.classification.single_label;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
