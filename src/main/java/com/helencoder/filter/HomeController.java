@@ -39,19 +39,19 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String search(@RequestParam(value = "text", defaultValue = "") String text, Model model) {
-        System.out.println("进入本方法了！");
-        System.out.println("提交参数为：" + text);
+        long startTime = System.currentTimeMillis();
         // 视图渲染
         if (text.isEmpty()) {
             model.addAttribute("msg", "请输入待检测文本");
         } else {
             model.addAttribute("msg", "待检测文本为：" + text);
+            // 中间逻辑处理
+            // 敏感词提取
+            Set<String> sensitiveWordsList = FilterController.getSensitiveWords(text);
+            model.addAttribute("sensitiveWords", sensitiveWordsList);
         }
-
-        // 中间逻辑处理
-        // 敏感词提取
-        Set<String> sensitiveWordsList = FilterController.getSensitiveWords(text);
-        model.addAttribute("sensitiveWords", sensitiveWordsList);
+        long endTime = System.currentTimeMillis();
+        model.addAttribute("time", "查询用时：" + (endTime - startTime) + "ms");
 
         return "filter_res";
     }
