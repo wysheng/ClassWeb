@@ -20,5 +20,14 @@
         </tr>
     </table>
 
+    <table>
+        <tr>
+            <th>本篇文章中疑似包含的敏感词有：</th>
+        </tr>
+        <tr th:each="n : ${suspectedWords}">
+            <td th:text="${n}">type</td>
+        </tr>
+    </table>
+
 </body>
 </html>

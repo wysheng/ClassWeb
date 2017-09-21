@@ -66,7 +66,15 @@ public class FilterController {
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     new FileInputStream(filepath)));
             for (String line = br.readLine(); line != null; line = br.readLine()) {
-                wordsList.add(line.trim());
+                // 判断是否全为中文字符
+                if (!BasicUtil.isContainsOtherCharacter(line.trim())) {
+                    // 进行字符串拼接和转换
+                    String pinyinStr = TransformUtil.transformToPinyin(line.trim());
+                    List<String> characterList = combineCharacter(line.trim(), pinyinStr.trim());
+                    wordsList.addAll(characterList);
+                } else {
+                    wordsList.add(line.trim());
+                }
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -96,6 +104,9 @@ public class FilterController {
 
     /**
      * 中文字符及期对应拼音组合转换(添加首字母)
+     *
+     * @param word 中文字符
+     * @param pinyin 中文字符对应的拼音 中间包含空格
      */
     public static List<String> combineCharacter(String word, String pinyin) {
         List<String> characterList = new ArrayList<String>();
